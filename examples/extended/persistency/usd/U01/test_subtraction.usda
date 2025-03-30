@@ -1,0 +1,76 @@
+#usda 1.0
+
+def Logical "wl"
+{
+    string[] daughters = ["s_pv1"]
+    string solidprim = "ws"
+
+    def Box "ws"
+    {
+        int[] faceVertexCounts = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+        int[] faceVertexIndices = [0, 1, 2, 0, 2, 3, 0, 4, 5, 0, 5, 1, 1, 5, 6, 1, 6, 2, 3, 6, 7, 3, 2, 6, 0, 3, 7, 0, 7, 4, 4, 6, 5, 4, 7, 6]
+        point3f[] points = [(-50, -50, -50), (-50, 50, -50), (50, 50, -50), (50, -50, -50), (-50, -50, 50), (-50, 50, 50), (50, 50, 50), (50, -50, 50)]
+        double x = 50
+        double y = 50
+        double z = 50
+    }
+
+    def Placement "s_pv1"
+    {
+        float3 xformOp:rotateZYX = (0, 0, 0)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX"]
+
+        def Logical "ul"
+        {
+            string[] daughters = []
+            string solidprim = "ss"
+
+            def Subtraction "ss"
+            {
+                string solid1prim = "bs"
+                string solid2prim = "bs_displaced"
+                string solid3prim = "result"
+
+                def Box "bs"
+                {
+                    int[] faceVertexCounts = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+                    int[] faceVertexIndices = [0, 1, 2, 0, 2, 3, 0, 4, 5, 0, 5, 1, 1, 5, 6, 1, 6, 2, 3, 6, 7, 3, 2, 6, 0, 3, 7, 0, 7, 4, 4, 6, 5, 4, 7, 6]
+                    point3f[] points = [(-5, -5, -5), (-5, 5, -5), (5, 5, -5), (5, -5, -5), (-5, -5, 5), (-5, 5, 5), (5, 5, 5), (5, -5, 5)]
+                    token visibility = "invisible"
+                    double x = 5
+                    double y = 5
+                    double z = 5
+                }
+
+                def DisplacedSolid "bs_displaced"
+                {
+                    double3 rotation = (5.729577951308232, 11.459155902616464, 17.188733853924695)
+                    double3 translation = (5, 5, 5)
+                    token visibility = "invisible"
+                    float3 xformOp:rotateZYX = (5.729578, 11.459156, 17.188734)
+                    double3 xformOp:translate = (5, 5, 5)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX"]
+
+                    def Box "bs"
+                    {
+                        int[] faceVertexCounts = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+                        int[] faceVertexIndices = [0, 1, 2, 0, 2, 3, 0, 4, 5, 0, 5, 1, 1, 5, 6, 1, 6, 2, 3, 6, 7, 3, 2, 6, 0, 3, 7, 0, 7, 4, 4, 6, 5, 4, 7, 6]
+                        point3f[] points = [(-5, -5, -5), (-5, 5, -5), (5, 5, -5), (5, -5, -5), (-5, -5, 5), (-5, 5, 5), (5, 5, 5), (5, -5, 5)]
+                        double x = 5
+                        double y = 5
+                        double z = 5
+                    }
+                }
+
+                def Mesh "result"
+                {
+                    int[] faceVertexCounts = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+                    int[] faceVertexIndices = [16, 12, 18, 15, 12, 16, 17, 12, 13, 18, 12, 17, 18, 6, 16, 15, 2, 14, 14, 12, 15, 13, 12, 14, 13, 10, 17, 9, 8, 17, 10, 9, 17, 5, 4, 16, 6, 5, 16, 11, 14, 0, 13, 11, 10, 13, 14, 11, 1, 0, 14, 2, 1, 14, 3, 2, 15, 16, 3, 15, 16, 4, 3, 7, 17, 8, 18, 7, 6, 18, 17, 7, 5, 3, 4, 9, 7, 8, 1, 11, 0, 7, 19, 6, 19, 5, 6, 19, 3, 5, 11, 19, 10, 19, 9, 10, 3, 19, 2, 19, 1, 2, 19, 7, 9, 19, 11, 1]
+                    point3f[] points = [(5, -0.2926716, 5), (5, 0.0019704965, 3.1900938), (5, 0.4483158, 0.4483158), (5, 0.61367005, -0.5674104), (5, 5, -0.12730941), (3.7551146, 5, 0.1263084), (0.74047446, 5, 0.74047446), (-1.0046175, 5, 1.0959983), (-0.34020662, 5, 5), (0.38272512, 2.8374, 5), (0.9977113, 0.9977113, 5), (1.761024, -1.2856858, 5), (-5, -5, -5), (-5, -5, 5), (5, -5, 5), (5, -5, -5), (5, 5, -5), (-5, 5, 5), (-5, 5, -5), (0.7733339, -0.7992546, 0.15191376)]
+                }
+            }
+        }
+    }
+}
+

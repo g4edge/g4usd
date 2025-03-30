@@ -9,3 +9,8 @@ if(GEANT4_USE_GDML)
   include(gdml/sources.cmake)
   geant4_add_category(G4gdml MODULES G4gdml)
 endif()
+
+if(GEANT4_USE_USD)
+  include(usd/sources.cmake)
+  geant4_add_category(G4usd MODULES G4usd)
+endif()

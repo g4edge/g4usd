@@ -204,6 +204,13 @@ if(NOT GEANT4_BUILD_GRANULAR_LIBS)
     set(G4_BUILTWITH_GDML "no")
   endif()
 
+  # - USD
+  if(GEANT4_USE_USD)
+    set(G4_BUILTWITH_USD "yes")
+  else()
+    set(G4_BUILTWITH_USD "no")
+  endif()
+
   # - G3ToG4
   if(GEANT4_USE_G3TOG4)
     set(G4_BUILTWITH_G3TOG4 "yes")

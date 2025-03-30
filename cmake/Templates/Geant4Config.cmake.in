@@ -300,6 +300,13 @@ if(Geant4_gdml_FOUND)
   find_dependency(XercesC @XercesC_VERSION@)
 endif()
 
+# - USD
+set(Geant4_usd_FOUND @GEANT4_USE_USD@)
+if(Geant4_usd_FOUND)
+  find_package(PXR REQUIRED usd usdGeom usdShade)
+  set(_geant4_use_usd_library ON)
+endif()
+
 # - VecGeom
 set(Geant4_usolids_FOUND @GEANT4_USE_USOLIDS_EITHER@)
 if(Geant4_usolids_FOUND)
@@ -521,6 +528,10 @@ endif()
 
 if(_geant4_use_vtk_library)
   list(APPEND _geant4_internal_libraries Geant4::G4visVtk${_geant4_lib_use_suffix})
+endif()
+
+if(_geant4_use_usd_library)
+  list(APPEND _geant4_internal_libraries Geant4::G4usd${_geant4_lib_use_suffix})
 endif()
 
 # - GDML always added for now as old G4persistency lib always added if present

@@ -90,6 +90,11 @@ if(GEANT4_USE_VTK)
 endif()
 geant4_add_feature(GEANT4_USE_VTK "Using VTK for visualisation")
 
+option(GEANT4_USE_USD "Build Geant4 with USD" OFF)
+if(GEANT4_USE_USD)
+  find_package(PXR REQUIRED usd usdGeom usdShade g4)
+endif()
+
 # - Unix only
 if(UNIX)
   # - Motif UI/Vis
