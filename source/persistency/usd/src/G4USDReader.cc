@@ -263,9 +263,9 @@ G4PVPlacement* G4USDReader::MakePVPlacement(pxr::UsdPrim& prim) {
   G4RotationMatrix *rotation_g4 = new G4RotationMatrix();
   G4ThreeVector translaton_g4 = G4ThreeVector(translation[0],translation[1], translation[2]);
 
-  rotation_g4->rotateX(rotation[0]);
-  rotation_g4->rotateY(rotation[1]);
-  rotation_g4->rotateZ(rotation[2]);
+  rotation_g4->rotateX(rotation[0]/180. * M_PI);
+  rotation_g4->rotateY(rotation[1]/180. * M_PI);
+  rotation_g4->rotateZ(rotation[2]/180. * M_PI);
   rotation_g4->rectify();
 
   std::cout << "G4USDReader::MakePVPlacement " << lv << std::endl;
